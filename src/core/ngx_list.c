@@ -14,7 +14,7 @@ ngx_list_create(ngx_pool_t *pool, ngx_uint_t n, size_t size)
 {
     ngx_list_t  *list;
 
-    list = ngx_palloc(pool, sizeof(ngx_list_t));//分配list header
+    list = ngx_palloc(pool, sizeof(ngx_list_t));//分配list 节点管理器
     if (list == NULL) {
         return NULL;
     }
@@ -35,7 +35,7 @@ ngx_list_push(ngx_list_t *l)
 
     last = l->last;
 
-    if (last->nelts == l->nalloc) {
+    if (last->nelts == l->nalloc) {//需要重新分配内存
 
         /* the last part is full, allocate a new list part */
 
@@ -59,5 +59,5 @@ ngx_list_push(ngx_list_t *l)
     elt = (char *) last->elts + l->size * last->nelts;
     last->nelts++;
 
-    return elt;
+    return elt;//返回可以放element的空间
 }

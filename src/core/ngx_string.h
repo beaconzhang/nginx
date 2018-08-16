@@ -44,7 +44,7 @@ typedef struct {
 #define ngx_str_null(str)   (str)->len = 0; (str)->data = NULL
 
 
-#define ngx_tolower(c)      (u_char) ((c >= 'A' && c <= 'Z') ? (c | 0x20) : c)
+#define ngx_tolower(c)      (u_char) ((c >= 'A' && c <= 'Z') ? (c | 0x20) : c) //A-Z 65-90 a-z 97-122
 #define ngx_toupper(c)      (u_char) ((c >= 'a' && c <= 'z') ? (c & ~0x20) : c)
 
 void ngx_strlow(u_char *dst, u_char *src, size_t n);
